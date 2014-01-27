@@ -1,14 +1,12 @@
 {% extends "layout.html" %}
 
+    {% import 'layout.html' as layout %}
+
     {% block otherlinks %}
       {% if home_url %}
-      <li class="{{index}}">
-          <a href="{{home_url}}">Notebook Home</a>
-      </li>
+        {{ layout.head_link(home_url    , "Notebook Home"    , "github"  ) }}
       {% endif %}
-      <li class="{{index}}">
-          <a href="{{download_url}}" download="{{download_name}}">Download Notebook</a>
-      </li>
+        {{ layout.head_link(download_url, "Download Notebook", "download") }}
     {% endblock %}
 
     {% block extra_head %}
@@ -73,13 +71,20 @@
     }
 
     @media (max-width: 767px){
+
         div.input, div.output_area {
             -webkit-box-orient: vertical;
             -moz-box-orient: vertical;
             box-orient: vertical;
         }
 
+        div.prompt {
+            text-align:left;
+        }
+
     }
+
+    
     </style>
     {% if css_theme %}
         <link href="/static/css/theme/{{css_theme}}.css" rel="stylesheet">
